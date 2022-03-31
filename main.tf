@@ -26,9 +26,10 @@ resource "random_string" "random" {
 
 module "s3" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "2.2.0"
+  version = "3.0.0"
 
-  bucket        = "${var.bucketname}-${random_string.random.id}"
+  bucket = "${var.bucketname}-${random_string.random.id}"
+  acl    = "private"
 }
   
 output "s3_bucket_arn" {
